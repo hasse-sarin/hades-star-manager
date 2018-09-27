@@ -1,0 +1,18 @@
+/*.log
+/target
+/*-init.clj
+/resources/public/js/compiled
+out
+
+# Clojure metafiles
+.lein-env
+.lein-failures
+.lein-repl-history
+.nrepl-port
+.nrepl-history
+
+# Allow all and any scratch files to exist in project root
+scratch.*
+
+# macOS meta files
+.DS_Store
