@@ -8,7 +8,8 @@
                  [re-com "2.1.0"]
                  [secretary "1.2.3"]
                  [garden "1.3.5"]
-                 [ns-tracker "0.3.1"]]
+                 [ns-tracker "0.3.1"]
+                 [re-frame-datatable "0.6.0"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-figwheel "0.5.7"]

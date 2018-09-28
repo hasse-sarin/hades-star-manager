@@ -4,8 +4,8 @@
             [reagent.core :as reagent]
             [hades-star-manager.events :as events]
             [hades-star-manager.subs :as subs]
-            [hades-star-manager.modules.module-selector :as module-selector]
-            [hades-star-manager.players.player :as player]))
+            [hades-star-manager.players.player :as player]
+            [hades-star-manager.players.roster :as roster]))
 
 ;; home
 (defn home-title []
@@ -23,41 +23,6 @@
    :on-change #(re-frame/dispatch [::events/set-active-white-star-size %])
    :width "250px"])
 
-;; TODO: Move to crafts?
-(defn battleship-loadout []
-  [re-com/v-box
-   :gap "1em"
-   :children [[re-com/title
-               :label "Battleship info"
-               :level :level3]
-              [module-selector/module-view {:title "Weapon" :info "Info" :placeholder "Select your weapon"}]
-              [module-selector/module-view {:title "Shield" :info "Info" :placeholder "Select your shield"}]
-              [module-selector/module-view {:title "Support" :info "Info" :placeholder "Select your support module"}]]])
-
-;; TODO: Move to crafts?
-(defn supportship-loadout []
-  [re-com/v-box
-   :gap "1em"
-   :children [[re-com/title
-               :label "Supportship info"
-               :level :level3]
-              [module-selector/module-view {:title "Mining" :info "Info" :placeholder "Select your mining module"}]
-              [module-selector/module-view {:title "Support" :info "Info" :placeholder "Select your support module"}]]])              
-
-;; TODO: Move to players?
-(defn player-manager []
-  [re-com/h-box
-   :gap "1em"
-   :justify :between
-   :class "player-manager"
-   :children [[player/add-player]
-              [battleship-loadout]
-              [supportship-loadout]
-              [re-com/button 
-               :label "Save"
-               :tooltip "Save selected options"
-               :style {:color "#fff" :background-color "#d80000"}]]])
-
 (defn link-to-about-page []
   [re-com/hyperlink-href
    :label "go to About Page"
@@ -74,7 +39,8 @@
                :label "Please select which White star match type you want to plan for"
                :level :level3]
               [white-star-selector]
-              [player-manager]
+              [roster/roster-container]
+              [player/add-player-component]
               [re-com/md-icon-button
                :md-icon-name "zmdi-plus"
                :emphasise? true

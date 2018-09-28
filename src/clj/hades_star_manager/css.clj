@@ -4,14 +4,14 @@
 (defstyles screen
   [:body {:height "100%"}]
   [:.level1 {:color "darkred"}]
-  
+
   [:#app {
     :height "100%"}]
   [:.container {
     :background-color "#eee"
     :padding "1em"}]
-    
-  [:.player-manager {
+
+  [:.add-player-component {
     :background-color "#ddd"
     :border "1px solid #bbb"
     :padding "0.8em"
