@@ -36,7 +36,7 @@
                :md-icon-name "zmdi-plus"
                :emphasise? true
                :tooltip "Add new player"
-               :on-click #()] ;; Is this button still useful?
+               :on-click #(re-frame/dispatch [::events/add-feedback-item :error "Roster full"])] ;; Is this button still useful?
               [link-to-about-page]]])
 
 ;; about

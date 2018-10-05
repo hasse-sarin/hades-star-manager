@@ -24,7 +24,7 @@
                            [re-com/input-text
                            :model (re-frame/subscribe [::subs/player-name])
                            :placeholder "Insert your name"
-                           :on-change #((re-frame/dispatch [::events/set-player-name %]))]]]
+                           :on-change #(re-frame/dispatch [::events/set-player-name %])]]]
               [re-com/v-box
                :children [[re-com/h-box
                            :gap "0.2em"
@@ -35,7 +35,7 @@
                            :choices (re-frame/subscribe [::subs/battleships])
                            :model (re-frame/subscribe [::subs/player-battleship])
                            :placeholder "Select your battleship"
-                           :on-change #((re-frame/dispatch [::events/set-player-battleship %]))
+                           :on-change #(re-frame/dispatch [::events/set-player-battleship %])
                            :width "250px"]]]
               [re-com/v-box
                :children [[re-com/h-box
@@ -47,7 +47,7 @@
                            :choices (re-frame/subscribe [::subs/supportships])
                            :model (re-frame/subscribe [::subs/player-supportship])
                            :placeholder "Select your supportship"
-                           :on-change #((re-frame/dispatch [::events/set-player-supportship %]))
+                           :on-change #(re-frame/dispatch [::events/set-player-supportship %])
                            :width "250px"]]]]])
 
 (defn battleship-loadout []
@@ -81,4 +81,4 @@
                :label "Save"
                :tooltip "Save selected options"
                :style {:color "#fff" :background-color "#d80000"}
-               :on-click #((re-frame/dispatch [::events/save-player]))]]])
+               :on-click #(re-frame/dispatch [::events/save-player])]]])

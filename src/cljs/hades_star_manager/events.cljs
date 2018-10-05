@@ -36,12 +36,19 @@
    (assoc-in db [:player :supportship] supportship)))
 
 (re-frame/reg-event-db
+ ::add-feedback-item
+ (fn-traced [db [_ type message]]
+  (update-in db [:feedback :id] inc) ;; TODO: coeffect? effect? Learn more how to deal.
+  (update-in db [:feedback :items] conj {:id (get-in db [:feedback :id]) :type type :message message})))
+
+(re-frame/reg-event-db
  ::save-player
  (fn-traced [db [_ _]]
-   ;; TODO: Add check that White star size has been selected
+   ;; TODO: Create a check to make sure that pleyer information has been filled or show feedback
+   ;; TODO: Add check that White star size has been selected or show feedback
    (if (< (count (:corporation-roster db)) (:selected-white-star-size db))
     (update-in db [:corporation-roster] conj {:name (get-in db [:player :name])
                                               :battleship (first (filter #(= (get-in db [:player :battleship]) (:id %)) (:battleships db)))
                                               :supportship (first (filter #(= (get-in db [:player :supportship]) (:id %)) (:supportships db)))})
-    (.log js/console "Too many players") ;; TODO: Create user feedback, too many players in roster
+    nil ;; TODO: Create user feedback, too many players in roster
       )))

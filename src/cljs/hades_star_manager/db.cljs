@@ -48,4 +48,7 @@
              :mining  [{:id 1 :label "Mining unity"}
                        {:id 2 :label "Remote mining"}
                        {:id 3 :label "Mining boost"}]}
+
+   :feedback {:id 0
+              :items []}
   })
