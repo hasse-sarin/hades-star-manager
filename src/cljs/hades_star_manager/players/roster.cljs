@@ -6,6 +6,14 @@
             [hades-star-manager.events :as events]
             [hades-star-manager.subs :as subs]))
 
+(defn white-star-selector []
+  [re-com/single-dropdown
+   :choices (re-frame/subscribe [::subs/white-star-sizes])
+   :model (re-frame/subscribe [::subs/selected-white-star-size])
+   :placeholder "Select a white star size"
+   :on-change #(re-frame/dispatch [::events/set-active-white-star-size %])
+   :width "250px"])
+
 (defn roster-container []
   [dt/datatable
    :roster-table
