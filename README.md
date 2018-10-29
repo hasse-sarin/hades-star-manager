@@ -38,3 +38,21 @@ To compile clojurescript to javascript:
 lein clean
 lein cljsbuild once min
 ```
+
+
+## Local Docker support
+
+```
+First (devops me out):
+  lein clean
+  lein garden once
+  lein cljsbuild once min
+Build: 
+  docker build -t <some-name> .
+Run:
+  docker run --name <some-name> -d -p 8080:80 <some-name>
+```
+
+should now be running in localhost:8080
+
+## Google App Engine deployment (coming soon)
